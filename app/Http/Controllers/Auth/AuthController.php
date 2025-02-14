@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,16 +38,16 @@ class AuthController extends Controller
     /**
      * submit login
      *
-     * @param AuthRequest $request
+     * @param LoginRequest $request
      *
      * @return [type]
      *
      */
-    public function login(AuthRequest $request)
+    public function login(LoginRequest $request)
     {
         $credentials = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password')
+            'email'     => $request->input('email'),
+            'password'  => $request->input('password')
         ];
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {

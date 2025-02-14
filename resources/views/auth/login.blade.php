@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>LARAVEL CMS 01</title>
+        <title>Login</title>
 
         <link href="extension/css/bootstrap.min.css" rel="stylesheet">
         <link href="extension/font-awesome/css/font-awesome.css" rel="stylesheet">
