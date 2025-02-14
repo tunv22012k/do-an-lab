@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest')->group(function () {
+Route::middleware('client')->group(function () {
     // login get page
     Route::get('login', [AuthController::class, 'index'])->name('login');
 

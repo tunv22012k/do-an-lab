@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectIfAuthenticated
+class MiddlewareGuest
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,6 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
-        if (Auth::check() && $request->is('login')) {
-            return redirect(RouteServiceProvider::HOME);
-        }
-
         return $next($request);
     }
 }

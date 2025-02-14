@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest')->group(function () {
+Route::middleware('client')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
