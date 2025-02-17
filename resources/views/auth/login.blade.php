@@ -12,6 +12,19 @@
         <link href="extension/css/animate.css" rel="stylesheet">
         <link href="extension/css/style.css" rel="stylesheet">
         <link href="extension/css/customize.css" rel="stylesheet">
+
+        @vite(['resources/js/app.js'])
+
+        <style>
+            .field-icon {
+                float: right;
+                margin-left: -25px;
+                margin-top: -25px;
+                position: relative;
+                z-index: 2;
+                margin-right: 5px;
+            }
+        </style>
     </head>
 
     <body class="gray-bg">
@@ -51,25 +64,19 @@
 
                             </div>
                             <div class="form-group">
-                                {{-- <input
+                                <input
                                     type="password"
                                     name="password"
-                                    class="form-control"
-                                    placeholder="Password"
-
-                                > --}}
-                                <input
-                                    type="text"
-                                    name="password"
-                                    class="form-control"
+                                    class="form-control form-password"
                                     placeholder="Password"
 
                                 >
-                                @if ($errors->has('password'))
-                                    <span class="error-messenger">* {{
-                                    $errors->first('password') }}</span>
-                                @endif
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
+                            @if ($errors->has('password'))
+                                <span class="error-messenger">* {{
+                                $errors->first('password') }}</span>
+                            @endif
                             <button type="submit" class="btn btn-primary block full-width m-b">Đăng nhập</button>
                             <a href="#">
                                 <small>Forgot password?</small>
@@ -95,5 +102,19 @@
                 </div>
             </div>
         </div>
+
+        <script type="module">
+            $(function() {
+                $(".toggle-password").click(function() {
+                    $(this).toggleClass("fa-eye fa-eye-slash");
+                    var input = $($('.form-password'));
+                    if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                    } else {
+                        input.attr("type", "password");
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
