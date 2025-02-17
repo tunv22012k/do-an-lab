@@ -17,6 +17,8 @@
     <link href="{{ asset('extension/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('extension/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('extension/css/customize.css') }}" rel="stylesheet">
+    <!-- Toastr style -->
+    <link href="{{ asset('extension/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 
     @yield('page_styles')
 
@@ -42,7 +44,36 @@
     {{-- <script src="{{ asset('extension/js/plugins/easypiechart/jquery.easypiechart.js') }}"></script> --}}
     {{-- <script src="{{ asset('extension/js/plugins/sparkline/jquery.sparkline.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('extension/js/demo/sparkline-demo.js') }}"></script> --}}
+    <script src="{{ asset('extension/js/plugins/toastr/toastr.min.js') }}"></script>
     <!-- Script-->
+    <script type="module">
+        $(function () {
+            var toastrPopup = "{{ uniqid() }}";
+            if(!sessionStorage.getItem('shown-' + toastrPopup)) {
+                @if ($message = Session::get('success'))
+                    toastr.options = {
+                        closeButton: true,
+                        progressBar: true,
+                        showMethod: 'slideDown',
+                        timeOut: 4000
+                    };
+                    toastr.success("{{ $message }}");
+                    sessionStorage.setItem('shown-' + toastrPopup, '1');
+                @endif
+
+                @if ($message = Session::get('error'))
+                    toastr.options = {
+                        closeButton: true,
+                        progressBar: true,
+                        showMethod: 'slideDown',
+                        timeOut: 4000
+                    };
+                    toastr.error("{{ $message }}");
+                    sessionStorage.setItem('shown-' + toastrPopup, '1');
+                @endif
+            }
+        });
+    </script>
 </head>
 <body>
     <div id="wrapper">

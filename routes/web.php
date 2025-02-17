@@ -9,6 +9,12 @@ Route::middleware('client')->group(function () {
 
     // process submit login
     Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+
+    // forgot_password get page
+    Route::get('forgot_password', [AuthController::class, 'forgotPassword'])->name('forgot_password');
+
+    // process submit forgot_password
+    Route::post('submit_forgot_password', [AuthController::class, 'submitForgotPassword'])->name('submit_forgot_password');
 });
 
 Route::middleware('auth')->group(function () {

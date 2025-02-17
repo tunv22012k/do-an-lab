@@ -13,6 +13,9 @@
         <link href="extension/css/style.css" rel="stylesheet">
         <link href="extension/css/customize.css" rel="stylesheet">
 
+        <!-- Toastr style -->
+        {{-- <link href="extension/css/plugins/toastr/toastr.min.css" rel="stylesheet"> --}}
+
         @vite(['resources/js/app.js'])
 
         <style>
@@ -78,7 +81,7 @@
                                 $errors->first('password') }}</span>
                             @endif
                             <button type="submit" class="btn btn-primary block full-width m-b">Đăng nhập</button>
-                            <a href="#">
+                            <a href="{{ route('forgot_password') }}">
                                 <small>Forgot password?</small>
                             </a>
                             <p class="text-muted text-center">
@@ -103,8 +106,12 @@
             </div>
         </div>
 
+        <!-- Mainly scripts -->
+        {{-- <script src="{{ asset('extension/js/jquery-3.1.1.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('extension/js/plugins/toastr/toastr.min.js') }}"></script> --}}
         <script type="module">
             $(function() {
+                // show and hide text password
                 $(".toggle-password").click(function() {
                     $(this).toggleClass("fa-eye fa-eye-slash");
                     var input = $($('.form-password'));

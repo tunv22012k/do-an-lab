@@ -4,18 +4,22 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    protected $userService;
+
     /**
      * __construct
      *
      *
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
+        $this->userService = $userService;
     }
 
     /**
@@ -52,11 +56,11 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard.index')->with('success', 'Đăng nhập thành công');
+            return redirect()->route('dashboard.index')->with('success', __('messages.login_susscess'));
         }
 
-        // chuyển về lại form đăng nhập->giữ lại email->hiển thị lỗi
-        return back()->withInput($request->only('email'))->withErrors(['email' => 'Email hoặc mật khẩu không đúng']);
+        // login fails -> redirect form login
+        return back()->withInput($request->only('email'))->withErrors(['email' => __('messages.error_email_password')]);
     }
 
     /**
@@ -74,5 +78,49 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('auth.login');
+    }
+
+    /**
+     * page forgot_password
+     *
+     * @return [type]
+     *
+     */
+    public function forgotPassword()
+    {
+        // check auth
+        if (Auth::check()) {
+            return redirect()->route('dashboard.index');
+        }
+
+        // return page forgot_password
+        return view('auth.forgot_password');
+    }
+
+    /**
+     * submit forgot_password
+     *
+     * @param Request $request
+     *
+     * @return [type]
+     *
+     */
+    public function submitForgotPassword(Request $request)
+    {
+        try {
+            // call service update password
+            $update = $this->userService->updatePassword($request['email']);
+
+            // check data
+            if ($update) {
+                // redirect route login
+                return redirect()->route('auth.login');
+            } else {
+                // return page when email not exits
+                return redirect()->back()->with('error', __('messages.email_not_exits'));
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
