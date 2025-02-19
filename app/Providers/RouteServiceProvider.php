@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard/index';
+    public const HOME = '/admin';
 
     /**
      * The path to your application's "top" route.

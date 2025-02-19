@@ -1,8 +1,6 @@
-<div class="footer">
-    <div class="pull-right">
-        10GB of <strong>250GB</strong> Free.
+<footer class="main-footer">
+    <strong>Sinh viên thực hiện:<a href="javascript:void"> TuNV</a>.</strong>
+    <div class="float-right d-none d-sm-inline-block">
+        <b>Đà Nẵng</b> 02/2025
     </div>
-    <div>
-        <strong>Copyright</strong> Example Company &copy; 2024-2025
-    </div>
-</div>
+</footer>

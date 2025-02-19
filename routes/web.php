@@ -19,5 +19,5 @@ Route::middleware('client')->group(function () {
 
 Route::middleware('auth')->group(function () {
     // process submit logout
-    Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
 });

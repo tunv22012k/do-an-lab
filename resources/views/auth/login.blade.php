@@ -27,29 +27,21 @@
                 z-index: 2;
                 margin-right: 5px;
             }
+            .hr_login {
+                margin-top: 15px;
+                margin-bottom: 5px;
+            }
         </style>
     </head>
 
     <body class="gray-bg">
         <div class="loginColumns animated fadeInDown">
             <div class="row">
-                <div class="col-md-6">
-                    <h2 class="font-bold">Welcome to IN+</h2>
-                    <p>
-                        Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-                    </p>
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                    </p>
-                    <p>
-                        When an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                    <p>
-                        <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
-                    </p>
+                <div class="col-md-2">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="ibox-content">
+                        ĐĂNG NHẬP TRANG QUẢN LÝ
                         <form method="post" class="m-t" role="form" action="{{ route('auth.login') }}">
                             @csrf
                             <div class="form-group">
@@ -57,7 +49,7 @@
                                     type="text"
                                     name="email"
                                     class="form-control"
-                                    placeholder="Email"
+                                    placeholder="Địa chỉ email"
                                     value="{{ old('email') }}"
                                 >
                                 @if ($errors->has('email'))
@@ -71,7 +63,7 @@
                                     type="password"
                                     name="password"
                                     class="form-control form-password"
-                                    placeholder="Password"
+                                    placeholder="Mật khẩu"
 
                                 >
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
@@ -81,28 +73,27 @@
                                 $errors->first('password') }}</span>
                             @endif
                             <button type="submit" class="btn btn-primary block full-width m-b">Đăng nhập</button>
-                            <a href="{{ route('forgot_password') }}">
-                                <small>Forgot password?</small>
+                            <a href="{{ route('forgot_password') }}" style="margin-top: 5px">
+                                <small>Quên mật khẩu?</small>
                             </a>
-                            <p class="text-muted text-center">
-                                <small>Do not have an account?</small>
-                            </p>
-                            <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
                         </form>
                         <p class="m-t">
-                            <small>newbie code we app framework base on Bootstrap 3 &copy; 2025</small>
                         </p>
                     </div>
                 </div>
+                <div class="col-md-2">
+                </div>
             </div>
-            <hr/>
+            <hr class="hr_login" />
             <div class="row">
-                <div class="col-md-6">
-                    Copyright Example Company
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    Công ty TNHH MTV TuNV
                 </div>
-                <div class="col-md-6 text-right">
-                <small>© 2024-2025</small>
+                <div class="col-md-4 text-right">
+                    <small>© 2024-2025</small>
                 </div>
+                <div class="col-md-2"></div>
             </div>
         </div>
 

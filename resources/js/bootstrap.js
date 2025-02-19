@@ -1,11 +1,14 @@
 import axios from 'axios';
 import $ from 'jquery';
+import moment from 'moment';
 
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.$ = window.jQuery = $;
+
+window.moment = moment;
 
 $.popup = {
     confirm : function(message,callback) {

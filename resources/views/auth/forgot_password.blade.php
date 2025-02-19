@@ -23,18 +23,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="ibox-content">
-                    <h2 class="font-bold">Forgot password</h2>
+                    <h2 class="font-bold">Quên mật khẩu</h2>
                     <p>
-                        Enter your email address and your password will be reset and emailed to you.
+                        Nhập địa chỉ email của bạn, mật khẩu sẽ được đặt lại và gửi tới email của bạn.
                     </p>
                     <div class="row">
                         <div class="col-lg-12">
                             <form class="m-t" role="form" method="post" action="{{ route('submit_forgot_password') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <input name="email" type="email" class="form-control" placeholder="Email address" required="">
+                                    <input name="email" type="email" class="form-control" placeholder="Địa chỉ Email" required="">
                                 </div>
-                                <button type="submit" class="btn btn-primary block full-width m-b">Send new password</button>
+                                <button type="submit" class="btn btn-primary block full-width m-b">Đặt lại mật khẩu</button>
+                                <a href="{{ route('login') }}">
+                                    <small>Đăng nhập</small>
+                                </a>
                             </form>
                         </div>
                     </div>
@@ -44,7 +47,7 @@
         <hr/>
         <div class="row">
             <div class="col-md-6">
-                Copyright Example Company
+                Công ty TNHH MTV TuNV
             </div>
             <div class="col-md-6 text-right">
                <small>© 2024-2025</small>

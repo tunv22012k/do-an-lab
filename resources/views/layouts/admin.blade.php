@@ -12,40 +12,12 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <link href="{{ asset('extension/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('extension/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <link href="{{ asset('extension/css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('extension/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('extension/css/customize.css') }}" rel="stylesheet">
-
-    <!-- Toastr style -->
-    <link href="{{ asset('extension/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css'])
 
     @yield('page_styles')
 
-    <!-- Script-->
-    <script src="{{ asset('extension/js/bootstrap.min.js') }}"></script>
-    {{-- <script src="{{ asset('extension/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/library/library.js') }}"></script> --}}
-    <script src="{{ asset('extension/js/jquery-3.1.1.min.js') }}"></script>
-    {{-- <script src="{{ asset('extension/js/plugins/flot/jquery.flot.js') }}"></script> --}}
-    <script src="{{ asset('extension/js/plugins/flot/jquery.flot.tooltip.min.js') }}"></script>
-    {{-- <script src="{{ asset('extension/js/plugins/flot/jquery.flot.spline.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/flot/jquery.flot.resize.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/flot/jquery.flot.pie.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/flot/jquery.flot.symbol.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/flot/jquery.flot.time.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/peity/jquery.peity.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/demo/peity-demo.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/inspinia.js') }}"></script> --}}
-    <script src="{{ asset('extension/js/plugins/pace/pace.min.js') }}"></script>
-    {{-- <script src="{{ asset('extension/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/easypiechart/jquery.easypiechart.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/plugins/sparkline/jquery.sparkline.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('extension/js/demo/sparkline-demo.js') }}"></script> --}}
-
+    @vite(['resources/js/app.js'])
+    <!-- toastr-->
     <script src="{{ asset('extension/js/plugins/toastr/toastr.min.js') }}"></script>
     <!-- Script-->
     <script type="module">
@@ -77,19 +49,68 @@
         });
     </script>
 </head>
-<body>
-    <div id="wrapper">
-        <!-- sidebar -->
-        @include('layouts.partial.sidebar')
-        <!-- /sidebar -->
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
 
-        <div id="page-wrapper" class="gray-bg">
-            @include('layouts.partial..nav')
-            @yield('content')
-            @include('layouts.partial.footer')
+        <!-- Preloader -->
+        {{-- <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="/dist/img/loading.png" alt="AdminLTELogo" height="60" width="60">
+        </div> --}}
+
+        <!-- Navbar -->
+        @include('layouts.partial.nav')
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        @include('layouts.partial.sidebar')
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">
+                                @if (trim($__env->yieldContent('template_title')))
+                                    @yield('template_title')
+                                @endif
+                            </h1>
+                        </div><!-- /.col -->
+                        {{-- <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">
+                                    <a href="/admin">Trang chính</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    @if (trim($__env->yieldContent('template_title')))
+                                        @yield('template_title')
+                                    @endif
+                                </li>
+                            </ol>
+                        </div><!-- /.col --> --}}
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    @yield('content')
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
         </div>
+        <!-- /.content-wrapper -->
+        @include('layouts.partial.footer')
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
-    @stack('scripts')
-    @yield('page_scripts')
+    <!-- ./wrapper -->
 </body>
 </html>
