@@ -112,5 +112,6 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    @yield('page_scripts')
 </body>
 </html>
