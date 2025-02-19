@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Route;
 /*ADMIN*/
 Route::middleware('auth_admin')->group(function () {
     // dashboard
-    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('admin', [DashboardController::class, 'index'])->name('dashboard.index');
 });

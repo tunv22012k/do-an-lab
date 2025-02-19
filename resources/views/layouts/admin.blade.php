@@ -17,6 +17,7 @@
     <link href="{{ asset('extension/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('extension/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('extension/css/customize.css') }}" rel="stylesheet">
+
     <!-- Toastr style -->
     <link href="{{ asset('extension/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 
@@ -44,6 +45,7 @@
     {{-- <script src="{{ asset('extension/js/plugins/easypiechart/jquery.easypiechart.js') }}"></script> --}}
     {{-- <script src="{{ asset('extension/js/plugins/sparkline/jquery.sparkline.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('extension/js/demo/sparkline-demo.js') }}"></script> --}}
+
     <script src="{{ asset('extension/js/plugins/toastr/toastr.min.js') }}"></script>
     <!-- Script-->
     <script type="module">
