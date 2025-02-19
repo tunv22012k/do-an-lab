@@ -14,7 +14,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" data-widget="fullscreen" href="#" role="button" title="Hiển thị toàn màn hình">
+            <a class="nav-link" data-widget="fullscreen" href="javascript:void(0)" role="button" title="Hiển thị toàn màn hình">
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
