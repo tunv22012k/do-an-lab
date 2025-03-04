@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('client')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    // home
+    Route::get('/', [HomeController::class, 'index'])->name('user.index');
 });
